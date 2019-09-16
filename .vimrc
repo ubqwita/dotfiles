@@ -1,25 +1,36 @@
 set nocompatible
 " Set syntax, UTF8-encoding, Line Numbering, Text Width, modelines
+language en_US.UTF-8
 syntax on
 set encoding=utf-8
 set number
 set modelines=0
+
 " Make backspace more powerful
 set backspace=indent,eol,start
+
 " Display 5 lines above/below the cursor when scrolling with a mouse.
 set scrolloff=5
+
 " Automatically wrap text that extends beyond the screen length.
 set wrap
+
 " Highlight matces, incremental, case-insenstive and smartcase search
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+
 " Display different types of white spaces
 set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
+
 " Store info from no more than 100 files, 9999 text lines, 100kb data.
 set viminfo='100,<9999,s100
+
+" Prevent x from overriding what's in the clipboard.
+noremap x "_x
+noremap X "_X
 
 " Mouse controller and cursor position
 set mouse=a
@@ -46,14 +57,18 @@ set pastetoggle=<F2>
 "endif
 "--------------End-of-Python-script-------------------------------------
 
-" Clipboard working quite good with vim-gtk
+" ---------------------------------- "
+" Vim-GTK Clipboard
+" ---------------------------------- "
 set clipboard=unnamed,unnamedplus
 " Use the system clipboard for yank/delete/paste operations
 if has('unnamedplus')
     set clipboard=unnamed,unnamedplus
 endif
 
-"------------Start Python PEP 8 stuff-----------------------------------
+" ---------------------------------- "
+" Python PEP 8
+" ---------------------------------- "
 " More syntax highlighting.
 au BufRead,BufNewFile *.py let python_highlight_all=1
 " Number of spaces that a pre-existing tab is equal to.
@@ -62,23 +77,62 @@ au BufRead,BufNewFile *py,*pyw,*.c,*.h set tabstop=4
 au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
 au BufRead,BufNewFile *.py,*.pyw set expandtab
 au BufRead,BufNewFile *.py set softtabstop=4
-" JS indentations
-au FileType javascript setlocal shiftwidth=2 tabstop=2
-" Use the below highlight group when displaying bad whitespace is desired.
+" Use the below highlight group when displaying bad whitespace is desired
 highlight BadWhitespace ctermbg=red guibg=red
-" Display tabs at the beginning of a line in Python mode as bad.
+" Display tabs at the beginning of a line in Python mode as bad
 au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
-" Make trailing whitespace be flagged as bad.
+" Make trailing whitespace be flagged as bad
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 " Wrap text after a certain number of characters
 au BufRead,BufNewFile *.py,*.pyw, set textwidth=72
 au BufRead,BufNewFile *.py,*.pyw, set colorcolumn=73
-" Use UNIX (\n) line endings.
+" Use UNIX (\n) line endings
 au BufNewFile *.py,*.pyw,*.c,*.h set fileformat=unix
 " Keep Pythonic indentation level and folding based on indentation
 au FileType python set autoindent
 au FileType python set foldmethod=indent
-"------------Stop python PEP 8 stuff------------------------------------
+" Make sure all types of requirements.txt files get syntax highlighting
+autocmd BufNewFile,BufRead requirements*.txt set syntax=python
+" HTML/CSS/JS filetype indentation and highlight
+autocmd BufNewFile,BufRead *.mako,*.mak,*.jinja2 setlocal ft=html
+au BufRead,BufNewFile,BufReadPost *.json set syntax=json
+au FileType javascript setlocal shiftwidth=2 tabstop=2
+au FileType html,xhtml,xml,css setlocal shiftwidth=2 tabstop=2
+" Ensure tabs don't get converted to spaces in Makefiles
+autocmd FileType make setlocal noexpandtab
+
+" ---------------------------------- "
+" Configure VUNDLE
+" ---------------------------------- "
+filetype off
+filetype plugin indent on
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+" Custom IDE
+Plugin 'vim-airline/vim-airline'
+Plugin 'tpope/vim-fugitive'
+Plugin 'majutsushi/tagbar'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tmhedberg/SimpylFold'
+" Python
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'sheerun/vim-polyglot'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'nvie/vim-flake8'
+Plugin 'python/black'
+" HTML/CSS/JS
+Plugin 'mattn/emmet-vim'
+Plugin 'tpope/vim-surround'
+Plugin 'Glench/Vim-Jinja2-Syntax'
+Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'elzr/vim-json'
+Plugin 'pangloss/vim-javascript'
+" Color themes
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'morhetz/gruvbox'
+" Finish loading VUNDLE
+call vundle#end()
 
 " ---------------------------------- "
 " Configure SimplylFold
@@ -88,32 +142,6 @@ let g:SimpylFold_docstring_preview = 0
 nnoremap <space> za
 " Set SimplylFold to work along with mouse
 set foldcolumn=2
-
-" ---------------------------------- "
-" Configure VUNDLE
-" ---------------------------------- "
-filetype off
-filetype plugin indent on
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" List of Vundle-plugins
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-" Pythonic IDE
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'majutsushi/tagbar'
-Plugin 'scrooloose/nerdtree'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'nvie/vim-flake8'
-Plugin 'python/black'
-" Colors
-Plugin 'morhetz/gruvbox'
-" Finish loading VUNDLE
-call vundle#end()
 
 " ---------------------------------- "
 " Configure GruvBox colors
