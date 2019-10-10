@@ -1,0 +1,30 @@
+session_name: html5jonas
+start_directory: '~/dev/html5jonas/'
+windows:
+- window_name: html5
+  panes:
+  - shell_command:
+    - source venv/bin/activate
+    - vim -p `find . \( -name '*.css' -o -name '*.html' \)`
+- window_name: html5dev1
+  layout: main-horizontal
+  options:
+    main-pane-height: 35
+  shell_command_before:
+  - source venv/bin/activate
+  panes:
+  - shell_command:
+    - ls -lah && pwd
+    focus: true
+  - shell_command:
+    - python3 -m http.server 8000
+- window_name: tmuxp
+  panes:
+  - shell_command:
+    - source venv/bin/activate
+    - vim ~/.tmuxp/html5jonas.yaml
+- window_name: p3ex
+  panes:
+  - shell_command:
+    - cd ~/dev/python3_tasks
+    - ls -l

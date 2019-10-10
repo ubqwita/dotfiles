@@ -1,0 +1,9 @@
+# git submodule update --init --recursive
+[url "https://"]
+	insteadOf = git://
+[http]
+[https]
+[user]
+[user]
+	name = aubique
+	email = ubikwita@gmail.com
