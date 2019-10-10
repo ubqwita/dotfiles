@@ -140,6 +140,14 @@ alias d0='DISPLAY=:0'
 # alias d0ris='DISPLAY=:0 ristretto -f Pictures/JW/Isaïe\ 40\:31.jpg'
 # alias teamviewer-start='sudo systemctl start teamviewerd.service && teamviewer && sudo systemctl stop teamviewerd.service'
 # alias teamviewer-stop='sudo systemctl stop teamviewerd.service'
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
 alias tmuxa='tmux attach-session || tmux new-session'
 alias chromie='chromium-browser --verbose --proxy-server=192.168.1.28:8080'
 alias p3tutor='tmuxp load .tmuxp/p3tutor.yaml'
+alias delugegtk='deluge -u gtk -L info'
+alias psurl='_tiny() { curl http://tinyurl.com/api-create.php?url="$1" | xclip -i -sel c ;}; _tiny'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'

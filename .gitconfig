@@ -2,9 +2,7 @@
 [url "https://"]
 	insteadOf = git://
 [http]
-	proxy = http://192.168.1.28:8080
 [https]
-	proxy = https://192.168.1.28:8080
 [user]
-	name = ubikwita
+	name = aubique
 	email = ubikwita@gmail.com

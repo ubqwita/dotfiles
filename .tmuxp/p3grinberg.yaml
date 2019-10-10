@@ -1,0 +1,40 @@
+session_name: flask-grinberg
+start_directory: '~/dev/flask-grinberg'
+windows:
+- window_name: p3flask
+  panes:
+  - shell_command:
+    - source venv/bin/activate
+    - vim -p config.py app/*.py
+- window_name: p3jinja
+  panes:
+  - shell_command:
+    - source venv/bin/activate
+    - vim -p `find -regex '.*[^\s0-9]\.html'`
+- window_name: p3dev1
+  layout: main-horizontal
+  options:
+    main-pane-height: 35
+  shell_command_before:
+  - source venv/bin/activate
+  panes:
+  - shell_command:
+    - ls -lah && pwd
+    focus: true
+  - shell_command:
+    - export FLASK_APP=microblog.py
+    - export FLASK_DEBUG=1
+    - export MAIL_SERVER=localhost
+    - export MAIL_PORT=8025
+    - flask run
+- window_name: p3dev2
+  panes:
+  - shell_command:
+    - source venv/bin/activate
+    - pwd
+- window_name: p3exm
+  panes:
+  - shell_command:
+    - cd ~/dev/python3_tasks
+    - ls -l
+    - python -m smtpd -n -c DebuggingServer localhost:8025

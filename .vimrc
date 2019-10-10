@@ -89,15 +89,16 @@ au BufRead,BufNewFile *.py,*.pyw, set colorcolumn=73
 " Use UNIX (\n) line endings
 au BufNewFile *.py,*.pyw,*.c,*.h set fileformat=unix
 " Keep Pythonic indentation level and folding based on indentation
-au FileType python set autoindent
-au FileType python set foldmethod=indent
+autocmd FileType python set autoindent
+autocmd FileType python set foldmethod=indent
 " Make sure all types of requirements.txt files get syntax highlighting
-autocmd BufNewFile,BufRead requirements*.txt set syntax=python
+au BufNewFile,BufRead requirements*.txt set syntax=python
 " HTML/CSS/JS filetype indentation and highlight
-autocmd BufNewFile,BufRead *.mako,*.mak,*.jinja2 setlocal ft=html
+au BufNewFile,BufRead *.mako,*.mak,*.jinja2 setlocal ft=html
 au BufRead,BufNewFile,BufReadPost *.json set syntax=json
 au FileType javascript setlocal shiftwidth=2 tabstop=2
-au FileType html,xhtml,xml,css setlocal shiftwidth=2 tabstop=2
+au FileType html,xhtml,xml,css,htmldjango setlocal shiftwidth=2 tabstop=2
+au FileType html,xhtml,xml,css,htmldjango,javascript,json setlocal expandtab
 " Ensure tabs don't get converted to spaces in Makefiles
 autocmd FileType make setlocal noexpandtab
 
@@ -125,7 +126,7 @@ Plugin 'python/black'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-surround'
 Plugin 'Glench/Vim-Jinja2-Syntax'
-Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'hail2u/vim-css3-syntax'
 Plugin 'elzr/vim-json'
 Plugin 'pangloss/vim-javascript'
 " Color themes
@@ -156,7 +157,7 @@ let g:gruvbox_improved_warnings=1
 " ---------------------------------- "
 nnoremap <F9> :TagbarToggle<CR>
 " Minimum indent and width required to get along with 73 colorcolumn
-let g:tagbar_width = 14
+let g:tagbar_width = 15
 "let g:tagbar_indent = 0
 "let g:tagbar_compact = 1
 
@@ -186,6 +187,15 @@ let g:jedi#goto_definitions_command = "<localleader>gg"
 let g:jedi#documentation_command = "<localleader>gd"
 let g:jedi#usages_command = "<localleader>U"
 let g:jedi#rename_command = "<localleader>R"
+
+" ---------------------------------- "
+" Configure Emmet-vim
+" ---------------------------------- "
+let g:user_emmet_settings = {
+\ 'html' : {
+\     'block_all_childless' : 1
+\   }
+\}
 
 " python/Black formatting settings
 let g:black_linelength = 72
