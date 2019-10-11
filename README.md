@@ -1,41 +1,92 @@
-# Config files backup
-A repository helping to set up and maintain the linux desktop environment. Most of the instructions are written for my personal workflow.
+# Configuration files
+
+That's the repository that helps to maintain my linux desktop environment. Most of the instructions are written for my personal workflow.
+
 ## Features
-- A synergy of `Vim` extensions to create **a minimalist developper IDE**.
-- `Tmux` terminal muiltiplexer build which is **an appropriate alternative of `Screen`**.
-- `Tmuxp` session manager designed for **automation and configuration of `Tmux` workflow**.
-## Tech
-This repository consists configuration for applications and requires the preinstalled packages listed below:
- 1. Git
- 2. Pip for python 3
- 3. [Tmux](https://github.com/tmux/tmux/wiki)
- 4. [Tmuxp](https://tmuxp.git-pull.com/en/latest/)
- 5. Vim ver. 7.4+
- > The VIM version should be higher than 7.4.1578+ to be working properly with ***YouCompleteMe*** extension. Currently CentOS 7 doesn't support such version.
+
+- Customize minimalist IDE with essential tools
+- Manage multiple terminal sessions
+- Configure and automate development workflow
+
+## Prerequisites
+
+This repository consists a configuration for various applications most of which need the packages listed below:
+
+ 1. SVN system -`git`
+ 2. Based text editor - `vim`
+ 3. Terminal multiplexer - `tmux`
+ 4. Session manager - `tmuxp`
+ 5. Python package installer - `pip`
+
 ## Installation
-Clone this project to your preferred folder. You can choose user download folder, `$HOME/Downloads`:
+
+Well, we wanna make `$HOME` the git *work-tree* but we don't want the entire user folder to be in a repo?
+
+That's where a git *bare* repository comes to play, the method I came across with recently. That looks more simple and elegant for versioning your configuration that symlink though.
+
+So let's get started!
+
+### Git Bare Repository
+
+We create a dummy folder and initialize a *bare git repository*, essentially a repo with no working directory in there.
+
+We gonna set an alias with a *dummy folder* for git files and *$HOME* for work directory. We don't mess up other repos and git commands in *$HOME* if we run the git commands this way.
+
+So let's get started!
+
+#### First Time Setup
+
+Create a git bare repository.
+
 ```bash
-$ cd ~/Downloads
-$ git clone https://github.com/ubqwita/dotfiles.git
-$ cd dotfiles
+mkdir .dotfiles
+git init --bare $HOME/.dotfiles
 ```
-Check out the downloaded files and pick some of them to the root-directory. For example, copy configs of Vim and Tmux over there:
+Append the alias to `.bashrc`:
+
 ```bash
-cp .vimrc .tmux.conf ~/
+echo 'alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"' >> $HOME/.bashrc
 ```
-### Putting VIM on its feet
-If you'd like to set up your Vim-environment properly you need to install [Vundle](https://github.com/gmarik/Vundle.vim) extension manager. Let's get it installed:
+
+Then using this command add a remote and set *status* not to show untracked files:
+
 ```bash
-$ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+dotfiles config --local status.showUntrackedFiles no
+dotfiles remote add origin git@github.com:aubique/dotfiles.git
 ```
-Afterward, you have to open Vim and run `:PluginInstall` what would let you download and  all the plugins listed in *.vimrc*.
+
+#### Putting Vim on its Feet
+
+This repo contains a [Vundle](https://github.com/gmarik/Vundle.vim) submodule repository. That's an extenstion manager that helps to manage environment with plugins properly.
+
+Get into `vim` and run `:PluginInstall` to download the plugins that you'd marked in `.vimrc`.
+
+### Setting Up a New Machine
+
+There are like two ways of fetching your dotfiles on your new machine. The first one is simply clone to your user folder.
+
+However, in your *$HOME* directory git might find existing config files. So you can clone it to a temporary folder:
+
+```bash
+git clone --separate-git-dir=$HOME/.dotfiles https://github.com/aubique/dotfiles.git tmpdotfiles
+```
+
+Copy by `rsync` your configs to *$HOME*-directory.
+
+Once we're done with synchronizing our config files we delete temporary folder:
+
+```bash
+rsync --recursive --verbose --exclude '.git' tmpdotfiles/ $HOME/
+rm -r tmpdotfiles
+```
+
 ## Sources
+
 I've got quite a lot from [the unofficial guide to dotfiles on GitHub](https://dotfiles.github.io/) to make a backup of my system configuration. And the whole idea of putting Vim to a good use as IDE was inspired particularly by RealPython article called [VIM and Python – A Match Made in Heaven](https://realpython.com/vim-and-python-a-match-made-in-heaven/).
+
+I also used these articles to create my own dotfiles configuration:
+
+- Anand Iyer Blog: [A simpler way to manage your dotfiles](https://www.anand-iyer.com/blog/2018/a-simpler-way-to-manage-your-dotfiles.html)
 ## TODO
-- [ ] Fill the features paragraph
-- [ ] List VIM-extensions
 - [ ] Add screenshots of Vim-IDE
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY4ODY1NzAzNSwtMTI1Nzg4MDQwNiw3ND
-MzMDIwNTYsMTA0MDU4NzU5Nl19
--->
+- [ ] Merge with `manjaro` branch
