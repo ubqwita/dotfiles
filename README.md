@@ -82,10 +82,11 @@ rm -r tmpdotfiles
 
 ## Sources
 
-I've got quite a lot from [the unofficial guide to dotfiles on GitHub](https://dotfiles.github.io/) to make a backup of my system configuration. And the whole idea of putting Vim to a good use as IDE was inspired particularly by RealPython article called [VIM and Python – A Match Made in Heaven](https://realpython.com/vim-and-python-a-match-made-in-heaven/).
+I've got inspired by the [the unofficial guide to dotfiles on GitHub](https://dotfiles.github.io/) to make my own backup for the system configuration files I'm currently using and therefore make it more easy to pass them on other machines.
 
 I also used these articles to create my own dotfiles configuration:
 
+- RealPython: [VIM and Python – A Match Made in Heaven](https://realpython.com/vim-and-python-a-match-made-in-heaven/).
 - Anand Iyer Blog: [A simpler way to manage your dotfiles](https://www.anand-iyer.com/blog/2018/a-simpler-way-to-manage-your-dotfiles.html)
 ## TODO
 - [ ] Add screenshots of Vim-IDE
