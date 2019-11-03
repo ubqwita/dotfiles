@@ -110,9 +110,13 @@ filetype plugin indent on
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
+" Fuzzy Finder
+set rtp+=~/.fzf
+Plugin 'junegunn/fzf.vim'
 " Custom IDE
 Plugin 'vim-airline/vim-airline'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-commentary'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tmhedberg/SimpylFold'
@@ -122,11 +126,13 @@ Plugin 'sheerun/vim-polyglot'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'nvie/vim-flake8'
 Plugin 'python/black'
-" HTML/CSS/JS
+" HTML/CSS
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-surround'
 Plugin 'Glench/Vim-Jinja2-Syntax'
 Plugin 'hail2u/vim-css3-syntax'
+Plugin 'gko/vim-coloresque'
+" JS
 Plugin 'elzr/vim-json'
 Plugin 'pangloss/vim-javascript'
 " Color themes

@@ -151,3 +151,5 @@ alias p3tutor='tmuxp load .tmuxp/p3tutor.yaml'
 alias delugegtk='deluge -u gtk -L info'
 alias psurl='_tiny() { curl http://tinyurl.com/api-create.php?url="$1" | xclip -i -sel c ;}; _tiny'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
