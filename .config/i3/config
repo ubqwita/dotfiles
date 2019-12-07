@@ -25,8 +25,10 @@ bindsym $mod+Return exec $terminal -e tmux new -s $(date '+%Hh%M(%S)')
 # Close window
 bindsym $mod+Shift+q kill
 
+# Choose a window to close
+bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
+
 # Start program launcher
-#bindsym $mod+d exec dmenu_run -fn 'Overpass Mono:pixelsize=15' -l 3 -nf '#707880' -sf '#cc6666' -nb '#1d1f21' -sb '#1d1f21'
 bindsym $mod+d exec "rofi -font 'hack 12' -show-icons -modi combi -show combi -combi-modi drun,run -location 1 -width 100 -lines 5 -line-margin 0 -line-padding 1 -columns 2 -bw 0 -hide-scrollbar"
 
 # Launch categorized menu
@@ -111,6 +113,8 @@ bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+c reload
 # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+# Restart notification-daemon
+bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 # Exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
@@ -163,11 +167,11 @@ bindsym $mod+r mode "resize"
 bindsym $mod+F1 exec chromium
 bindsym $mod+F3 exec pcmanfm
 bindsym $mod+F4 exec $terminal -e ranger
-bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+bindsym $mod+F5 workspace 5; exec "chromium --app=http://www.eni-training.com/cs/eni-ecole/CampusEnLigne --start-fullscreen"
+bindsym $mod+F6 workspace 6; exec "chromium --app=https://open.spotify.com --start-fullscreen"
 bindsym Print exec scrot '/tmp/lossless.png' -e 'ffmpeg -hide_banner -i $f -compression_level 100 ~/pics/scr/%Y%m%d%H_%M%S.jpg && rm $f'; exec  notify-send "Scrot a whole screen"
 bindsym $mod+Shift+Print --release exec scrot -u '/tmp/lossless.png' -e 'ffmpeg -hide_banner -i $f -compression_level 100 ~/pics/scr/%Y%m%d%H_%M%S.jpg && rm $f'; exec notify-send "Scrot a window"
 bindsym $mod+Ctrl+Shift+Print --release exec scrot -s '/tmp/lossless.png' -e 'ffmpeg -hide_banner -i $f -compression_level 100 ~/pics/scr/%Y%m%d%H_%M%S.jpg && rm $f'; exec notify-send "Scrot the selected area"
-bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
 #############
 ### i3bar ###
@@ -181,7 +185,6 @@ bar {
 }
 
 new_window pixel 2
-
 hide_edge_borders vertical
 
 ##############
@@ -207,9 +210,6 @@ client.background       #ffffff
 
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id clipit
-#exec --no-startup-id volumeicon
-#exec --no-startup-id manjaro-hello
 exec_always --no-startup-id fix_xcursor
 
 # Autoload keyboard-layouts
@@ -245,9 +245,14 @@ for_window [class="Spotify"] floating disable
 for_window [class="Timeshift-gtk"] floating disable
 for_window [class="calibre"] floating disable
 for_window [class="feh"] floating disable
-for_window [class="jetbrains-idea" title="Project Structure"] floating disable
-for_window [title="Welcome to IntelliJ IDEA"] floating disable
+
+# IntelliJ IDEA customization
 for_window [title="Welcome to PyCharm"] floating disable
+for_window [title="Welcome to IntelliJ IDEA"] floating disable
+for_window [class="^jetbrains-.+"] floating disable
+for_window [class="^jetbrains-.+" title="Confirm Exit"] floating enable border pixel 5
+for_window [class="^jetbrains-.+" title="Tip of the Day"] floating enable border pixel 2
+for_window [class="com-intellij-rt-execution-.+"] floating enable border pixel 1
 
 # Enable floating for some apps
 for_window [title="alsamixer"] floating enable border pixel 1

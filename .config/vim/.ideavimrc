@@ -25,6 +25,7 @@ nnoremap <C-z> :action RecentChanges<CR>
 "nnoremap <C-a-w> :action EditorSelectWord<CR>
 "inoremap <C-a-j> :action InsertLiveTemplate<CR>
 "nnoremap <C-a-r> :action RefactoringMenu<CR>
+nnoremap <C-a-s-p> :action ParameterInfo<CR>
 "noremap <C-s-Up> :action MoveLineUp<CR>
 "noremap <C-s-Down> :action MoveLineDown<CR>
 "nnoremap <C-a-o> :action Back<CR>
@@ -54,8 +55,8 @@ nnoremap gb :action GotoImplementation<CR>
 nnoremap gB :action QuickImplementations<CR>
 nnoremap gs :action GotoSuperMethod<CR>
 nnoremap gS :action GotoTypeDeclaration<CR>
-nnoremap <leader>oo :action ExpressionTypeInfo<CR>
-nnoremap <leader>op :action ParameterInfo<CR>
+nnoremap <leader>pp :action ExpressionTypeInfo<CR>
+nnoremap <leader>pi :action ParameterInfo<CR>
 
 " Turn absolute numbers on
 set number

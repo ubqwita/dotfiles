@@ -16,3 +16,4 @@ pgadmin4
 snapd
 etcher
 tldr
+unzip
