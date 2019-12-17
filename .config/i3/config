@@ -165,7 +165,8 @@ bindsym $mod+r mode "resize"
 
 # Start Applications
 bindsym $mod+F1 exec chromium
-bindsym $mod+F3 exec pcmanfm
+bindsym $mod+F2 exec pcmanfm
+bindsym $mod+F3 workspace 3; exec intellij-idea-ultimate
 bindsym $mod+F4 exec $terminal -e ranger
 bindsym $mod+F5 workspace 5; exec "chromium --app=http://www.eni-training.com/cs/eni-ecole/CampusEnLigne --start-fullscreen"
 bindsym $mod+F6 workspace 6; exec "chromium --app=https://open.spotify.com --start-fullscreen"

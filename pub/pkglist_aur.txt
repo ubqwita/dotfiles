@@ -6,3 +6,6 @@ cnijfilter2
 rosa-image-writer
 losslesscut
 pomo
+python-pillow-git
+wpgtk-git
+python-grip

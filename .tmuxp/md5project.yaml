@@ -1,0 +1,17 @@
+session_name: p3tutor
+start_directory: '~/dev/misc/todo'
+windows:
+- window_name: grip
+  focus: true
+  layout: main-horizontal
+  options:
+    main-pane-height: 30
+  panes:
+  - shell_command:
+    - chromium --app=http://localhost:6419 --start-fullscreen
+    focus: true
+  - grip bquiz_desktop.md
+- window_name: md5
+  panes:
+  - shell_command:
+    - vim bquiz_desktop.md

@@ -17,3 +17,4 @@ snapd
 etcher
 tldr
 unzip
+okular
