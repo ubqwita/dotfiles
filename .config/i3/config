@@ -169,7 +169,7 @@ bindsym $mod+F2 exec pcmanfm
 bindsym $mod+F3 workspace 3; exec intellij-idea-ultimate
 bindsym $mod+F4 exec $terminal -e ranger
 bindsym $mod+F5 workspace 5; exec "chromium --app=http://www.eni-training.com/cs/eni-ecole/CampusEnLigne --start-fullscreen"
-bindsym $mod+F6 workspace 6; exec "chromium --app=https://open.spotify.com --start-fullscreen"
+bindsym $mod+F6 workspace 6; exec spotify
 bindsym Print exec scrot '/tmp/lossless.png' -e 'ffmpeg -hide_banner -i $f -compression_level 100 ~/pics/scr/%Y%m%d%H_%M%S.jpg && rm $f'; exec  notify-send "Scrot a whole screen"
 bindsym $mod+Shift+Print --release exec scrot -u '/tmp/lossless.png' -e 'ffmpeg -hide_banner -i $f -compression_level 100 ~/pics/scr/%Y%m%d%H_%M%S.jpg && rm $f'; exec notify-send "Scrot a window"
 bindsym $mod+Ctrl+Shift+Print --release exec scrot -s '/tmp/lossless.png' -e 'ffmpeg -hide_banner -i $f -compression_level 100 ~/pics/scr/%Y%m%d%H_%M%S.jpg && rm $f'; exec notify-send "Scrot the selected area"

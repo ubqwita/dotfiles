@@ -10,8 +10,8 @@ windows:
   - shell_command:
     - chromium --app=http://localhost:6419 --start-fullscreen
     focus: true
-  - grip bquiz_desktop.md
+  - grip jcalc.md
 - window_name: md5
   panes:
   - shell_command:
-    - vim bquiz_desktop.md
+    - vim jcalc.md
