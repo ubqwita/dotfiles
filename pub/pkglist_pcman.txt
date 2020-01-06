@@ -18,3 +18,4 @@ etcher
 tldr
 unzip
 okular
+youtube-dl
