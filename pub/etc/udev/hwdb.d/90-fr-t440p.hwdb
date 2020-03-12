@@ -1,0 +1,4 @@
+# French Layout ThinkPad T440p
+
+evdev:name:AT Translated Set 2 keyboard:dmi:bvnLENOVO:bvr*:bd*:svnLENOVO:pn20AWS3RH00:pvrThinkPadT440p:rvnLENOVO:rn*:rvr*:cvnLENOVO:ct10:cvr*
+ KEYBOARD_KEY_56=leftshift

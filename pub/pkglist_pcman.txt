@@ -1,3 +1,4 @@
+gvim
 rofi
 polybar
 tmux
@@ -12,10 +13,16 @@ python-pywal
 java-runtime-common
 java-environment-common
 postgresql
-pgadmin4
+tomcat9
+maven
+ttf-hack
 snapd
 etcher
 tldr
 unzip
 okular
+ebook-tools
 youtube-dl
+nodejs
+npm
+nginx

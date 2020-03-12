@@ -9,6 +9,7 @@
 " Plugins
 set surround
 set commentary
+set multiple-cursors
 
 let mapleader="\"
 " Shortcuts overwritten in .ideavimrc

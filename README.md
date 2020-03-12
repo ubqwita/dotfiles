@@ -1,6 +1,6 @@
 # Configuration files
 
-That's the repository that helps to maintain my linux desktop environment. Most of the instructions are written for my personal workflow.
+That's the repository that helps to maintain my Linux desktop environment. Most of the instructions are written for my personal workflow.
 
 ## Features
 
@@ -16,7 +16,7 @@ This repository consists a configuration for various applications most of which 
  2. Based text editor - `vim`
  3. Terminal multiplexer - `tmux`
  4. Session manager - `tmuxp`
- 5. Python package installer - `pip`
+ 5. Arch User Repository helper - `yay`
 
 ## Installation
 
@@ -99,8 +99,8 @@ PS1='\t \[\033[01;32m\]\u\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;
 
 #### Putting Vim on its Feet
 
-This repo contains a [Vundle](https://github.com/gmarik/Vundle.vim) submodule repository.
-That's an extenstion manager that helps to manage environment with plugins properly.
+This repo contains a [Vundle](https://github.com/gmarik/Vundle.vim) sub-module repository.
+That's an extension manager that helps to manage environment with plugins properly.
 
 Let's get it installed:
 ```bash
@@ -143,12 +143,12 @@ Then go to GitHub account, click **Settings -> SSH and GPG keys -> New SSH Key**
 
 ## Keyboard Layouts
 
-Adding one more language to `i3wm` set of keyboard layouts is some kind of tricky process.
+Adding one more language to `i3wm` set of keyboard layouts is sort of tricky process.
 
 There are two common ways to do that:
 
- 1. Override system-wide configration with `localectl`
- 2. Explicitly set XKB configration on start-up with `setxkbmap`
+ 1. Override system-wide configuration with `localectl`
+ 2. Explicitly set XKB configuration on start-up with `setxkbmap`
 
 ### Xorg/Keyboard configuration
 
@@ -165,7 +165,6 @@ $ setxkbmap -model pc105 -layout us,ru -variant ,, -option grp:alt_shift_toggle 
 ```
 
 ### Hardware Database files
-> **This section is deprecated!**
 
 `hwdb` is a key-value store for associating modalias-like keys to `udev`-property-like values. It maps the scan codes from your keyboard to standard key codes, and `/etc/udev/hwdb.d/` provides a means of customization, which allows overriding the way scan codes are mapped.
 
@@ -175,7 +174,7 @@ $ setxkbmap -model pc105 -layout us,ru -variant ,, -option grp:alt_shift_toggle 
 
 The actual rules read by udev upon boot is a compiled binary file called `hwdb.bin`, so one will need to compile the configuration files into binary.
 
-Copy `90-isa-aerbook.hwdb` to the local administration directory `/etc/udev/hwdb.d/` then run commands to make the changes take effect immediately:
+Copy `90-fr-t440p.hwdb` from `pub` folder to the local administration directory `/etc/udev/hwdb.d/` then run commands to make the changes take effect immediately:
 ```
 # systemd-hwdb update
 # udevadm trigger
@@ -190,12 +189,12 @@ $ xev | grep -Fi key
 
 **VLC** is a default video player in the most of Linux distros.
 
-### Streaming to Chromecast
+### Streaming with Chrome Cast
 
-Starting with 3.0 release (Vetinari branch), **VLC** can stream to chromecast devices on the same wireless network.
+Starting with 3.0 release (Vetinari branch), **VLC** can stream to ChromeCast devices on the same wireless network.
 
 Install packages:
- 1. `libmicrodns` - VLC can find the chromecast device and it shows up in **Playback > Renderer** menu
+ 1. `libmicrodns` - VLC can find the ChromeCast device and it shows up in **Playback > Renderer** menu
  2. `protobuf` - enables streaming to the selected device in **Playback > Renderer** menu
 
 ## Sources
@@ -215,6 +214,5 @@ I also used these articles to create my own dotfiles configuration:
 ## TODO
 
 - [x] Merge with `xubuntu` branch
-- [x] Generate SSH keys for Github with an example of `.ssh/config`
-- [ ] Describe how to switch between JVM
-- [ ] Throw away the outdated `hwdb` section
+- [ ] Describe how to set up IntelliJ environment
+- [ ] Update `hwdb` and `chromecast` section
