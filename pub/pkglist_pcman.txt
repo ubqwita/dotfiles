@@ -26,3 +26,5 @@ youtube-dl
 nodejs
 npm
 nginx
+pavucontrol
+pulsemixer

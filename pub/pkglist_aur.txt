@@ -9,3 +9,7 @@ losslesscut
 pomo
 python-grip
 screencloud
+pepper-flash
+zoom
+skypeforlinux-preview-bin
+audio-recorder
