@@ -21,13 +21,17 @@ nnoremap <C-z> :action RecentChanges<CR>
 "noremap <C-a-n> :action GotoClass<CR>
 "noremap <C-a-q> :action QuickJavaDoc<CR>
 "noremap <C-s-q> :action QuickImplementations<CR>
+"noremap <C-a-d> :action GotoDeclaration<CR>
 "nnoremap <C-s-s> :action GotoSuperMethod<CR>
 "noremap <C-a-e> :action RecentFiles<CR>
 "nnoremap <C-a-w> :action EditorSelectWord<CR>
 "inoremap <C-a-j> :action InsertLiveTemplate<CR>
 "nnoremap <C-a-r> :action RefactoringMenu<CR>
-nnoremap <C-a-s-p> :action ParameterInfo<CR> "noremap <C-s-Up> :action MoveLineUp<CR> "noremap <C-s-Down> :action MoveLineDown<CR> "nnoremap <C-a-o> :action Back<CR>
-"nnoremap <C-a-i> :action Forward<CR>
+"nnoremap <C-p> :action ParameterInfo<CR>
+"noremap <C-s-Up> :action MoveLineUp<CR>
+"noremap <C-s-Down> :action MoveLineDown<CR>
+"nnoremap <C-o> :action Back<CR>
+"nnoremap <C-i> :action Forward<CR>
 
 " Run and debug
 nnoremap <leader>ff :action ReformatCode<CR>

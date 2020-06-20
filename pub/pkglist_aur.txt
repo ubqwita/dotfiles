@@ -13,3 +13,7 @@ pepper-flash
 zoom
 skypeforlinux-preview-bin
 audio-recorder
+virtualbox-ext-oracle
+wcalc
+github-cli
+snapd-xdg-open-git

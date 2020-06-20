@@ -109,8 +109,9 @@ au FileType html,xhtml,xml,css,htmldjango setlocal shiftwidth=2 tabstop=2
 au FileType html,xhtml,xml,css,htmldjango,javascript,json setlocal expandtab
 " Ensure tabs don't get converted to spaces in Makefiles
 autocmd FileType make setlocal noexpandtab
-" Spell check per filetype
-autocmd FileType markdown,gitcommit setlocal spell
+" Markdown spell check and width limiter
+autocmd FileType markdown,gitcommit setlocal spell spelllang=en,ru
+au BufRead,BufNewFile *.md, set colorcolumn=75
 
 " ---------------------------------- "
 " Configure VUNDLE

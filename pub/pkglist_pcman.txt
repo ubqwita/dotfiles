@@ -28,3 +28,12 @@ npm
 nginx
 pavucontrol
 pulsemixer
+ntfs-3g
+linux55-virtualbox-host-modules
+virtualbox
+slack-online
+gradle
+openjdk-doc
+openjdk-src
+pdfsam
+hub
