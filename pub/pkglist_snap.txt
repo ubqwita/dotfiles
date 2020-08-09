@@ -2,4 +2,3 @@ intellij-idea-ultimate
 spotify
 postman
 heroku
-teams-for-linux

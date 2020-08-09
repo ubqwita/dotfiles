@@ -14,24 +14,26 @@ set multiple-cursors
 let mapleader="\"
 " Shortcuts overwritten in .ideavimrc
 lnoremap <C-v> <Esc>:action $Paste<CR>
-noremap <C-h> :action TypeHierarchy<CR>
 nnoremap <C-z> :action RecentChanges<CR>
 
 " Shortcuts overwritten in IntelliJ keyboard settings
-"noremap <C-a-n> :action GotoClass<CR>
-"noremap <C-a-q> :action QuickJavaDoc<CR>
-"noremap <C-s-q> :action QuickImplementations<CR>
-"noremap <C-a-d> :action GotoDeclaration<CR>
-"nnoremap <C-s-s> :action GotoSuperMethod<CR>
 "noremap <C-a-e> :action RecentFiles<CR>
-"nnoremap <C-a-w> :action EditorSelectWord<CR>
-"inoremap <C-a-j> :action InsertLiveTemplate<CR>
-"nnoremap <C-a-r> :action RefactoringMenu<CR>
-"nnoremap <C-p> :action ParameterInfo<CR>
+"noremap <C-a-n> :action GotoClass<CR>
+"noremap <C-p> :action ParameterInfo<CR>
+"nnoremap <C-a-d> :action GotoDeclaration<CR>
+"nnoremap <C-s-u> :action GotoSuperMethod<CR>
+"nnoremap <C-a-q> :action QuickJavaDoc<CR>
+"nnoremap <C-s-i> :action QuickImplementations<CR>
+"nnoremap <C-a-i> :action ImplementMethods<CR>
+"nnoremap <C-a-o> :action OverrideMethods<CR>
+"nnoremap <C-a-h> :action TypeHierarchy<CR>
+"inoremap <C-s-j> :action InsertLiveTemplate<CR>
+"inoremap <C-a-j> :action SurroundWithLiveTemplate<CR>
 "noremap <C-s-Up> :action MoveLineUp<CR>
 "noremap <C-s-Down> :action MoveLineDown<CR>
 "nnoremap <C-o> :action Back<CR>
 "nnoremap <C-i> :action Forward<CR>
+"nnoremap <C-a-w> :action EditorSelectWord<CR>
 
 " Run and debug
 nnoremap <leader>ff :action ReformatCode<CR>

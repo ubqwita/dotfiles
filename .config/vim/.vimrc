@@ -174,6 +174,12 @@ let g:gruvbox_guisp_fallback = "bg"
 colorscheme gruvbox
 
 " ---------------------------------- "
+" Configure Spell checking Highlight
+" ---------------------------------- "
+hi clear SpellBad
+hi SpellBad cterm=underline,bold
+
+" ---------------------------------- "
 " Configure Tagbar
 " ---------------------------------- "
 nnoremap <F9> :TagbarToggle<CR>

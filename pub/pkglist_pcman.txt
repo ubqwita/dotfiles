@@ -15,10 +15,14 @@ java-environment-common
 postgresql
 tomcat9
 maven
+gradle
+openjdk-doc
+openjdk-src
 ttf-hack
 snapd
 etcher
 tldr
+zip
 unzip
 okular
 ebook-tools
@@ -32,8 +36,9 @@ ntfs-3g
 linux55-virtualbox-host-modules
 virtualbox
 slack-online
-gradle
-openjdk-doc
-openjdk-src
 pdfsam
 hub
+gnu-netcat
+pulseaudio-bluetooth
+pulseaudio-bluetooth-a2dp-gdm-fix
+pulseaudio-bluetooth
