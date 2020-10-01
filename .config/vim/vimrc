@@ -1,11 +1,3 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"   Filename: ~/.vimrc                                                                                        "
-" Maintainer: Alexandre M. <alexander.matveev@univ-ubs.fr>                                                    "
-"        URL: http://github.com/aubique/dotfiles/                                                             "
-"                                                                                                             "
-" Settings of the based editor aka VIM-Improved                                                               "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 set nocompatible
 " Set syntax, UTF8-encoding, Line Numbering, Text Width, modelines
 language en_US.UTF-8
@@ -13,6 +5,28 @@ syntax on
 set encoding=utf-8
 set number
 set modelines=0
+" Load XDG configuration
+let $MYVIMDIR=expand("<sfile>:h")
+source $MYVIMDIR/xdg.vim
+
+" Cursor in terminal
+" https://vim.fandom.com/wiki/Configuring_the_cursor
+" 1 or 0 -> blinking block
+" 2 solid block
+" 3 -> blinking underscore
+" 4 solid underscore
+" Recent versions of xterm (282 or above) also support
+" 5 -> blinking vertical bar
+" 6 -> solid vertical bar
+
+augroup myCmds
+    au!
+    autocmd VimEnter * let &t_EI .= "\<Esc>[1 q"
+    autocmd VimEnter * let &t_SI .= "\<Esc>[5 q"
+    autocmd VimLeave * silent !echo -ne "\e[1 q"
+    autocmd InsertEnter * set cul
+    autocmd InsertLeave * set nocul
+augroup END
 
 " Make backspace more powerful
 set backspace=indent,eol,start
@@ -34,7 +48,7 @@ set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
 
 " Store info from no more than 100 files, 9999 text lines, 100kb data.
-set viminfo='100,<9999,s100
+"set viminfo='100,<9999,s100
 
 " Prevent x from overriding what's in the clipboard.
 noremap x "_x
@@ -50,21 +64,6 @@ nnoremap <F2> :set invpaste paste?<CR>
 imap <F2> <C-O>:set invpaste paste?<CR>
 set pastetoggle=<F2>
 
-"----------Add the VirtualEnv site-packages to vim-path-----------------
-"if has('python3')
-"py3 << EOF
-"import os.path
-"import sys
-"import vim
-"if 'VIRTUAL_ENV' in os.environ:
-"    project_base_dir = os.environ['VIRTUAL_ENV']
-"    sys.path.insert(0, project_base_dir)
-"    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-"    execfile(activate_this, dict(__file__=activate_this))
-"EOF
-"endif
-"--------------End-of-Python-script-------------------------------------
-
 " ---------------------------------- "
 " Vim-GTK Clipboard
 " ---------------------------------- "
@@ -74,9 +73,6 @@ if has('unnamedplus')
     set clipboard=unnamed,unnamedplus
 endif
 
-" ---------------------------------- "
-" Python PEP 8
-" ---------------------------------- "
 " More syntax highlighting.
 au BufRead,BufNewFile *.py let python_highlight_all=1
 " Number of spaces that a pre-existing tab is equal to.
@@ -110,7 +106,7 @@ au FileType html,xhtml,xml,css,htmldjango,javascript,json setlocal expandtab
 " Ensure tabs don't get converted to spaces in Makefiles
 autocmd FileType make setlocal noexpandtab
 " Markdown spell check and width limiter
-autocmd FileType markdown,gitcommit setlocal spell spelllang=en,ru
+autocmd FileType markdown,gitcommit setlocal spell spelllang=en,fr,ru
 au BufRead,BufNewFile *.md, set colorcolumn=75
 
 " ---------------------------------- "
@@ -118,8 +114,9 @@ au BufRead,BufNewFile *.md, set colorcolumn=75
 " ---------------------------------- "
 filetype off
 filetype plugin indent on
-set rtp+=~/.vim/bundle/Vundle.vim
+"set rtp+=$VIMDOTDIR/bundle/Vundle.vim
 call vundle#begin()
+let vundle#bundle_dir = expand("$XDG_DATA_HOME/vim/bundle")
 Plugin 'VundleVim/Vundle.vim'
 " Fuzzy Finder
 set rtp+=~/.fzf
@@ -166,12 +163,12 @@ set foldcolumn=2
 " ---------------------------------- "
 " Configure GruvBox colors
 " ---------------------------------- "
-let g:gruvbox_italic=1
-let g:gruvbox_termcolors=256
-let g:gruvbox_improved_strings=0
-let g:gruvbox_improved_warnings=1
-let g:gruvbox_guisp_fallback = "bg"
-colorscheme gruvbox
+"let g:gruvbox_italic=1
+"let g:gruvbox_termcolors=256
+"let g:gruvbox_improved_strings=0
+"let g:gruvbox_improved_warnings=1
+"let g:gruvbox_guisp_fallback = "bg"
+"colorscheme gruvbox
 
 " ---------------------------------- "
 " Configure Spell checking Highlight
@@ -193,8 +190,8 @@ let g:tagbar_width = 15
 " ---------------------------------- "
 nnoremap <F8> :NERDTreeToggle<CR>
 " Open NERDTree when Vim startsup and no files were specified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Close Vim if the only window left open is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 

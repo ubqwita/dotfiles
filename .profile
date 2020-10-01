@@ -1,1 +1,1 @@
-.config/X/.profile
+.config/profile
